@@ -22,7 +22,7 @@
         android:id="@+id/btNewAddProfession"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Enter new profession"
+        android:hint="Enter new profession"
         android:layout_marginTop="70dp"
         />
 
@@ -30,7 +30,8 @@
         android:id="@+id/btGradeAddProfession"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Enter grade"
+        android:inputType="number"
+        android:hint="Enter grade"
         />
 
     <Button

@@ -19,17 +19,18 @@
         android:textSize="50dp" />
 
     <Spinner
-        android:id="@+id/planets_spinner"
+        android:id="@+id/professionSpinnerUpdate"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         />
 
     <EditText
-        android:id="@+id/btGradeAddProfession"
+        android:id="@+id/etGradeAddProfession"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Enter grade"
+        android:inputType="number"
+        android:hint="Enter grade"
         />
 
     <Button

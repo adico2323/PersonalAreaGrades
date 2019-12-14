@@ -18,4 +18,9 @@ public class Profession {
     public int getGrade() { return this.grade; }
 
     public void  setGrade(int grade) {this.grade = grade; }
+
+    @Override
+    public String toString(){
+        return "[ " + this.getProfession() + " | " + this.getGrade() + " ]";
+    }
 }

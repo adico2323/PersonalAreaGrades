@@ -3,6 +3,7 @@ package com.example.theproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         buildTables();
-        initTables();
+        if(!checkInitTables()) {
+            initTables();
+        }
 
         final Button gradeList = findViewById(R.id.btGradeList);
         gradeList.setOnClickListener(new View.OnClickListener() {
@@ -58,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buildTables() {
-        db = openOrCreateDatabase("profession list", MODE_PRIVATE, null);
+        db = openOrCreateDatabase("profession list new", MODE_PRIVATE, null);
         db.execSQL("create table if not exists  tbl_profession(profession text, grade int) ");
     }
 
     private void initTables() {
-        db = openOrCreateDatabase("profession list", MODE_PRIVATE, null);
+        db = openOrCreateDatabase("profession list new", MODE_PRIVATE, null);
 
         Profession p1 =new Profession("math", 90);
         Profession p2 =new Profession("english", 80);
@@ -83,5 +86,18 @@ public class MainActivity extends AppCompatActivity {
             db.execSQL("insert into tbl_profession values('"+ProfessionList.get(i).getProfession()+
                     "', '"+ProfessionList.get(i).getGrade() + "')");
         }
+    }
+
+    private boolean checkInitTables(){
+        db = openOrCreateDatabase("profession list new", MODE_PRIVATE, null);
+        Cursor cursor = db.rawQuery("select profession from tbl_profession", null);
+        boolean tableHasData = false;
+
+        while (cursor.moveToNext())
+        {
+            tableHasData = true;
+        }
+
+        return tableHasData;
     }
 }
